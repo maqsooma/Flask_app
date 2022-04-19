@@ -9,6 +9,8 @@ from sqlalchemy import create_engine,true
 from sqlalchemy.orm import sessionmaker,scoped_session
 from flask_sqlalchemy import SQLAlchemy
 
+
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24).hex()
@@ -57,10 +59,11 @@ def edit(message_id):
 
     return render_template('edit.html')
 
-@app.post('/<int:message_id>/delete/')
+@app.route('/<int:message_id>/delete/', methods=('GET', 'POST'))
 def delete(message_id):
     message_id= message_id
-    con.execute('DELETE from messsages where id = "{}"'.format(message_id))
+    if request.method == 'POST':
+        con.execute('DELETE from messsages where id = "{}"'.format(message_id))
     return redirect(url_for('index'))
 
 if __name__ == '__main__':

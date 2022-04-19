@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
-    <form class="container " style = "margin-bottom:60px" method="post">
-        <h1>{% block title %} Add a New Message {% endblock %}</h1>
-        <div class="mb-3 w-50 "> 
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" name="title"
-          placeholder="Message title"
-          value="{{ request.form['title'] }}" >
-        </div>
-        <div class="mb-3 w-50">
-          <label for="Content" class="form-label">Content</label>
-          <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="10">{{ request.form['contetn'] }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    <div class="justify-content-center">
+      <form class="container" style = "margin-bottom:60px" method="post">
+          <h1>{% block title %} Add a New Message {% endblock %}</h1>
+          <div class="mb-3 w-50 "> 
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title"
+            placeholder="Message title"
+            value="{{ request.form['title'] }}" >
+          </div>
+          <div class="mb-3 w-50">
+            <label for="Content" class="form-label">Content</label>
+            <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="10">{{ request.form['contetn'] }}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>    
 {% endblock %}
